@@ -50,5 +50,10 @@ barraBusqueda.addEventListener("keyup", () => {
     user.email.toLowerCase().includes(busqueda)
   );
 
-  mostrarUsuarios(usuariosFiltrados);
+  if (usuariosFiltrados.length !== 0) {
+    mostrarUsuarios(usuariosFiltrados);
+  } else {
+    tablaUsuarios.innerHTML = `<p class="msg-user-no-encontrado">No se encontraron usuarios</p>`
+  }
+
 });
