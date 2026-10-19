@@ -5,7 +5,8 @@
   --color-secundario: #f0eefb;
 }
 
-p {
+header p,
+footer p {
   text-align: center;
 }
 
@@ -20,8 +21,9 @@ main {
 }
 
 hr {
-  color: var(--color-gris-oscuro);
-  border: 1px solid;
+  border: none;
+  border-top: 1px solid var(--color-gris-oscuro);
+  width: 100%;
 }
 
 .botonera {
@@ -93,4 +95,9 @@ hr {
   .td-img {
     width: 15px;
   }
+}
+
+.msg-user-no-encontrado {
+  text-align: center;
+  font-size: 2rem;
 }
