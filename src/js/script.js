@@ -8,9 +8,11 @@ const barraBusqueda = document.getElementById("search-box");
 const usuarios = JSON.parse(localStorage.getItem("usuarios"));
 console.table(usuarios);
 
+// Evento del titulo Users para mostrar los usuarios cuando le hacen click
 tituloUsers.addEventListener("click", () => mostrarUsuarios(usuarios));
 
 function mostrarUsuarios(arr) {
+  // Inicializo filasUsuarios con el head de la tabla
   let filasUsuarios = `
         <thead>
           <tr>
@@ -24,6 +26,7 @@ function mostrarUsuarios(arr) {
         </thead>
         <tbody>`;
 
+  // Agrega por usuario una fila a la tabla con sus datos en sus respectivas columnas
   arr.forEach(p => {
     filasUsuarios += `
     <tr>
@@ -41,19 +44,21 @@ function mostrarUsuarios(arr) {
   tablaUsuarios.innerHTML = filasUsuarios;
 };
 
+// Evento de la barra de busqueda para filtrar los usuarios
 barraBusqueda.addEventListener("keyup", () => {
   const busqueda = barraBusqueda.value.toLowerCase().trim();
 
+  // Filtra los usuarios que encuentra si el username o el name o el email incluyen el texto de la busqueda
   const usuariosFiltrados = usuarios.filter(user =>
     user.username.toLowerCase().includes(busqueda) ||
     user.name.toLowerCase().includes(busqueda) ||
     user.email.toLowerCase().includes(busqueda)
   );
 
+  // Si encuentra usuarios los renderiza de lo contrario muestra el mensaje "No se encontraron usuarios""
   if (usuariosFiltrados.length !== 0) {
     mostrarUsuarios(usuariosFiltrados);
   } else {
     tablaUsuarios.innerHTML = `<p class="msg-user-no-encontrado">No se encontraron usuarios</p>`
   }
-
 });
